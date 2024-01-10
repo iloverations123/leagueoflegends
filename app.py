@@ -5,10 +5,9 @@ from testing import get_latest_ddragon, get_champion_by_key, get_all_champions_i
 from dotenv import load_dotenv
 import os 
 
-
-app = Flask(__name__)
 load_dotenv()
 api_key = os.getenv('API_KEY')
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -16,6 +15,7 @@ def index():
 
 @app.route('/recommendations', methods=['POST'])
 def get_recommendations():
+    api_key = os.getenv('API_KEY')
     username = request.form.get('username')
     json_file = get_mastery_data(api_key, username) # this code returns the json file for the user's champion_mastery_data in riots api
     print(json_file)
