@@ -2,11 +2,12 @@ from flask import Flask, render_template, request
 from get_summoner_data import get_mastery_data
 from league_recommendation_tool import Champion_Recommendation_Tool, Comparison_Tool
 from testing import get_latest_ddragon, get_champion_by_key, get_all_champions_in_list
-
+from dotenv import load_dotenv
 import os 
 
 
 app = Flask(__name__)
+load_dotenv()
 
 @app.route('/')
 def index():
